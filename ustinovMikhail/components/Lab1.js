@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, Button } from 'react-native';
 
-export default function App() {
+const Lab1 = () => {
+  const [timer, setTimer] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimer((prevTimer) => prevTimer + 1);
+    }, 1000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   return (
-    <View style={styles.container}>
-      <Text>ez lab0 by Ustinov Mikhail</Text>
-      <StatusBar style="auto" />
+    <View style={{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
+      <Text style={{ fontSize: 24 }}>Timer: {timer} seconds</Text>
+      <Button title="Reset" onPress={() => setTimer(0)} />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default Lab1;
