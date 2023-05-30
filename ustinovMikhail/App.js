@@ -1,9 +1,11 @@
-import Lab1 from './components/Lab1.js';
-import Lab2 from './components/Lab2.js';
+import NavBar from "./components/NavBar.js";
+import NavigationContainer from '@react-navigation/native';
 
 const App = () => {
   return (
-    <Lab2 />
+    <NavigationContainer>
+      <NavBar />
+    </NavigationContainer>
   );
 };
 
